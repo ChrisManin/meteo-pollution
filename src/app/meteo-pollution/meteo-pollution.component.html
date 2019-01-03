@@ -1,0 +1,23 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav mode="side" #sidenav>
+        <mp-cities></mp-cities>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="basic" fxLayout="column">
+            <mat-toolbar-row fxLayout="row" fxLayoutAlign="start center">
+                <button mat-raised-button color="primary" (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </mat-toolbar-row>
+            <mat-toolbar-row fxLayout="row" fxLayoutAlign="center">
+                <mp-city (onCity)="addCity($event)" [city]="city"></mp-city>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <mp-meteo [city]="city.address ? city : null" (onCity)="foo()"></mp-meteo>
+        <mp-pollution [city]="city.address ? city : null" (onCity)="foo()"></mp-pollution>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mp-cities></mp-cities>

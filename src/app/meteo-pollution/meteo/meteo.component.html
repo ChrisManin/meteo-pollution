@@ -1,0 +1,61 @@
+<div class="meteo" fxLayout="row" fxLayoutAlign="space-around center" >
+  <h2 >Météo</h2>
+</div>
+<div *ngIf="!city || !city.weather; else display">No icon
+  <span>Loading... </span>
+</div>
+
+<ng-template #display>
+  <div class="icone" fxLayout="row" fxLayoutAlign="space-around center" >
+    <p><img src="http://openweathermap.org/img/w/{{city.weather.weather[0].icon}}.png" alt="weather icon"></p>
+  </div>
+
+
+
+
+
+
+<mat-tab-group dynamicHeight>
+    <mat-tab label="Description">
+      <div class="example-large-box mat-elevation-z4">
+        <ul>
+          <li>{{ city.weather.weather[0].main }}</li>
+          <li>{{ city.weather.weather[0].description }}</li>
+        </ul>
+      </div>
+    </mat-tab>
+    <mat-tab label="Température">
+      <div class="example-large-box mat-elevation-z4">
+        <ul>
+          <li>Température : {{ city.weather.main.temp|number: '0.1-1' }}°C</li>
+          <li>Pression : {{ city.weather.main.pressure }} hPa</li>
+          <li>Humidité : {{ city.weather.main.humidity }}</li>
+          <li>Temp. mini : {{ city.weather.main.temp_min }}</li>
+          <li>Temp. maxi : {{ city.weather.main.temp_max }}</li>
+        </ul>
+      </div>
+    </mat-tab>
+    <mat-tab label="Vent">
+      <div class="example-large-box mat-elevation-z4">
+        <ul>
+          <li>Vitesse de vent : {{ city.weather.wind.speed }}</li>
+          <li>Température du vent : {{ city.weather.wind.deg }}</li>
+        </ul>
+      </div>
+    </mat-tab>
+    <mat-tab label="Ensoleillement">
+      <div class="example-large-box mat-elevation-z4">
+        <ul>
+          <li>Lever de soleil : {{ city.weather.sys.sunrise|date: 'medium' : 'UTC/GMT +1 hour' }}</li>
+          <li>Coucher de soleil : {{ city.weather.sys.sunset|date: 'medium' : 'UTC/GMT +1 hour' }}</li>
+        </ul>
+      </div>
+    </mat-tab>
+</mat-tab-group>
+</ng-template>
+  
+
+
+
+
+

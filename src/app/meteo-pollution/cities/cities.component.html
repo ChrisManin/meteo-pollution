@@ -1,0 +1,7 @@
+<form [formGroup]="cityForm" (ngSubmit)="inputCity.blur()">
+    <mat-form-field>
+        <input #inputCity (blur)="onSubmit($event)"  matInput placeholder="Ajoutez une ville" formControlName="cityName">
+        <mat-error *ngIf="cityForm.get('cityName').errors && cityForm.get('cityName').errors.minlength">Too short</mat-error>
+        <mat-error *ngIf="cityForm.get('cityName').errors && cityForm.get('cityName').errors.maxlength">Too long</mat-error>
+    </mat-form-field>
+</form>
